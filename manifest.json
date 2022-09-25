@@ -4,10 +4,13 @@
     "version": "1.0",
     "manifest_version": 3,
     "background": {
-    "service_worker": "background.js"
+        "service_worker": "background.js"
     },  
-    "permissions": ["activeTab", "scripting"],
+    "permissions": [
+        "activeTab", "scripting", "storage", 
+        "accessibilityFeatures.read", "accessibilityFeatures.modify"
+    ],
     "action": {
-    "default_popup": "popup.html"
+        "default_popup": "popup.html"
     }
   }
