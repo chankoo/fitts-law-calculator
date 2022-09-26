@@ -1,0 +1,16 @@
+{
+    "name": "Fitts' Law Calculator",
+    "description": "Let's calculate Fitts' Law on your web.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },  
+    "permissions": [
+        "activeTab", "scripting", "storage", 
+        "accessibilityFeatures.read", "accessibilityFeatures.modify"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    }
+  }
