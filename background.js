@@ -1,11 +1,13 @@
 function calcFittsResult(D, W){
+  if (!D) {
+    return null;
+  }
   return Math.log2((2*D) / W);
 }
 
 function calcDistanceBetween(domRectA, domRectB) {
   const aPosition = getPositionAtCenter(domRectA);
   const bPosition = getPositionAtCenter(domRectB);
-
   return Math.hypot(aPosition.x - bPosition.x, aPosition.y - bPosition.y);  
 }
 
@@ -25,7 +27,6 @@ function calcArea(domRect) {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.message === 'clickedElement'){
     chrome.storage.local.get(['DomRect'], function({DomRect}) {
-      console.log('DomRect', DomRect)
       if (DomRect){
         sendResponse({ message: 'result', data: calcFittsResult(calcDistanceBetween(DomRect, request.data), calcArea(request.data)) });
       }
