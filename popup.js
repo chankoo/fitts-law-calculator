@@ -13,6 +13,7 @@ activateSelector.addEventListener("click", async () => {
 // The body of this function will be executed as a content script inside the current page
 const activateSelect = () => {
     document.addEventListener('click', (e) => {
+        e.preventDefault();
         const domRect = e.target.getBoundingClientRect()
         console.log('domRect', domRect)
         chrome.runtime.sendMessage({
@@ -23,5 +24,5 @@ const activateSelect = () => {
                 alert(res.data)
             }
         });
-    })
+    }, {capture: true})
 }
